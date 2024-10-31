@@ -13,10 +13,10 @@ def shop_trip() -> None:
     for customer in customers:
         print(f"{customer.name} has {customer.money} dollars")
 
-        cheapest_shop = [None, 0]
+        cheapest_shop = [None, float("inf")]
         for shop in shops:
             total_cost = customer.calculate_total_cost(fuel_price, shop)
-            if total_cost < cheapest_shop[1] or cheapest_shop[1] == 0:
+            if total_cost < cheapest_shop[1]:
                 cheapest_shop[0] = shop
                 cheapest_shop[1] = total_cost
             print(f"{customer.name}'s trip to "

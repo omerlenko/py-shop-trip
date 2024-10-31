@@ -31,10 +31,12 @@ class Customer:
         return round(l_per_km * distance * fuel_price * 2, 2)
 
     def calculate_cart_cost(self, shop: Shop) -> int | float:
-        cart_cost = 0
-        for item in self.product_cart:
-            cart_cost += self.product_cart[item] * shop.products[item]
-        return cart_cost
+        if shop.products:
+            cart_cost = 0
+            for item in self.product_cart:
+                cart_cost += self.product_cart[item] * shop.products[item]
+            return cart_cost
+        return 0
 
     def calculate_total_cost(
         self,
