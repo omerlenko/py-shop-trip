@@ -36,7 +36,8 @@ def shop_trip() -> None:
                 cost_per_product = (
                     customer.product_cart[key] * cheapest_shop[0].products[key]
                 )
-                if cost_per_product.is_integer():
+                if (isinstance(cost_per_product, float)
+                        and cost_per_product.is_integer()):
                     cost_per_product = int(cost_per_product)
                 total_products_cost += cost_per_product
                 print(f"{value} {key}s for {cost_per_product} dollars")
